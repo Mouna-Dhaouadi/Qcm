@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="topeka_primary">#00bad2</color>
+    <color name="touch_effect">#9ccc</color>
+    <color name="math1">#20B2AA</color>
+    <color name="math2">#2F4F4F</color>
+    <color name="texte1">#FFE4B5</color>
+    <color name="texte2">#FFDAB9</color>
+</resources>

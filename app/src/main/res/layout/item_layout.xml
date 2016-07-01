@@ -1,0 +1,50 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/category_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="@drawable/selector_subtle"
+    tools:ignore="UseCompoundDrawables">
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.percent.PercentRelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/texte"
+            android:layout_row="0"
+            android:layout_column="0">
+        <TextView
+            android:id="@+id/f_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="okk"
+            android:textSize="30dp"
+            android:textAlignment="center"/>
+</android.support.percent.PercentRelativeLayout>
+
+        <android.support.percent.PercentRelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:id="@+id/icon"
+            android:rowCount="1"
+            android:columnCount="0"
+            android:layout_row="1"
+            android:layout_column="0">
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="category"
+                    android:src="@drawable/math" />
+    </android.support.percent.PercentRelativeLayout>
+    </GridLayout>
+
+
+</FrameLayout>

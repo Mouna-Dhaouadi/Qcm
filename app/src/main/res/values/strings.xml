@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">QCM</string>
+
+    <string name="title_activity_start">StartActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_category">Category</string>
+    <string-array name="category">
+        <item>"Math"</item>
+        <item>"Arabic"</item>
+    </string-array>
+    <string name="title_activity_math">MathActivity</string>
+    <string name="title_activity_arabic">ArabicActivity</string>
+    <string name="title_activity_default">DefaultActivity</string>
+
+</resources>
