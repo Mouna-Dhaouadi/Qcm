@@ -2,18 +2,14 @@ package souleima.qcm;
 
 import android.app.ProgressDialog;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
 import android.os.AsyncTask;
 
 import android.os.Bundle;
 
-import android.support.v7.app.ActionBarActivity;
-
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-
-import android.view.MenuItem;
 
 import android.view.View;
 
@@ -75,9 +71,14 @@ public class QuizActivity extends AppCompatActivity {
 
     private int quizCount;
 
+    private int score;
+
+    private boolean firstTrial=true;
+
     private QuizWrapper firstQuestion;
 
     private List<QuizWrapper> parsedObject;
+
 
     @Override
 
@@ -105,74 +106,73 @@ public class QuizActivity extends AppCompatActivity {
 
         Button nextButton = (Button)findViewById(R.id.nextquiz);
 
+        final Button btHint =(Button)findViewById(R.id.btHint);
+
         AsyncJsonObject asyncObject = new AsyncJsonObject();
 
         asyncObject.execute("");
 
+        btHint.setVisibility(View.GONE);
+
         nextButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
-
             public void onClick(View v) {
-
                 int radioSelected = radioGroup.getCheckedRadioButtonId();
-
                 int userSelection = getSelectedAnswer(radioSelected);
 
                 int correctAnswerForQuestion = firstQuestion.getCorrectAnswer();
 
                 if(userSelection == correctAnswerForQuestion){
-
-// correct answer
-
+                    // correct answer
+                    if (firstTrial) { score ++; }
                     Toast.makeText(QuizActivity.this, "You got the answer correct", Toast.LENGTH_LONG).show();
-
                     currentQuizQuestion++;
+                    /*if(currentQuizQuestion >= quizCount){
+                        Toast.makeText(QuizActivity.this, "End of the Quiz Questions. You got "+score+" questions correct from the first trial", Toast.LENGTH_LONG).show();
+                        return;
+                    }*/
 
                     if(currentQuizQuestion >= quizCount){
-
                         Toast.makeText(QuizActivity.this, "End of the Quiz Questions", Toast.LENGTH_LONG).show();
-
-                        return;
+                        Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
+                        Bundle b = new Bundle();
+                        b.putInt("score", score);//Your score
+                        b.putInt("quizCount",quizCount);
+                        intent.putExtras(b); //Put your score to your next Intent
+                        startActivity(intent);
+                        finish();
 
                     }
+
 
                     else{
-
+                        firstTrial=true;
                         firstQuestion = parsedObject.get(currentQuizQuestion);
-
-                        quizQuestion.setText(firstQuestion.getQuestion());
-
+                        quizQuestion.setText("Question " +( currentQuizQuestion +1 )+": "+firstQuestion.getQuestion());
                         String[] possibleAnswers = firstQuestion.getAnswers().split(",");
-
                         uncheckedRadioButton();
-
                         optionOne.setText(possibleAnswers[0]);
-
                         optionTwo.setText(possibleAnswers[1]);
-
                         optionThree.setText(possibleAnswers[2]);
-
                         optionFour.setText(possibleAnswers[3]);
-
                     }
-
                 }
-
                 else{
-
-// failed question
-
-                    Toast.makeText(QuizActivity.this, "You chose the wrong answer", Toast.LENGTH_LONG).show();
-
+                    // failed question
+                    firstTrial=false;
+                    btHint.setVisibility(View.VISIBLE);
                     return;
-
                 }
-
             }
-
         });
-
+        btHint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] possibleAnswers = firstQuestion.getAnswers().split(",");
+                Toast.makeText(QuizActivity.this, "the correct answer is : "+possibleAnswers[firstQuestion.getCorrectAnswer()-1] +" \n try harder !!" ,
+                        Toast.LENGTH_LONG).show();
+            }
+        });
         previousButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -384,7 +384,7 @@ public class QuizActivity extends AppCompatActivity {
         return jsonObject;
 
     }
-
+//get the selected answer
     private int getSelectedAnswer(int radioSelected){
 
         int answerSelected = 0;
@@ -416,7 +416,7 @@ public class QuizActivity extends AppCompatActivity {
         return answerSelected;
 
     }
-
+//uncheck the radio buttons
     private void uncheckedRadioButton(){
 
         optionOne.setChecked(false);

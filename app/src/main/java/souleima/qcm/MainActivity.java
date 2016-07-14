@@ -16,7 +16,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     private TimePicker timePicker;
-    Button setNotifBt;
+    Button setNotifBt,btStop;
     int hour = 0;
     int min = 0;
 
@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setNotifBt = (Button) findViewById(R.id.setNotifBt);
         timePicker = (TimePicker) findViewById(R.id.timePicker);
+        btStop=(Button)findViewById(R.id.btStop);
         setNotifBt.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ShowToast")
             @Override
@@ -53,8 +54,14 @@ public class MainActivity extends AppCompatActivity {
                         .show();
             }
         });
-    }
-    public void getTime(){
-
+        btStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NotificationReceiver.class);
+                PendingIntent sender = PendingIntent.getBroadcast(getApplicationContext(), 100, intent,PendingIntent.FLAG_UPDATE_CURRENT);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                alarmManager.cancel(sender);
+            }
+        });
     }
 }

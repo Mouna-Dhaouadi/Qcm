@@ -12,5 +12,8 @@
     <string name="title_activity_math">MathActivity</string>
     <string name="title_activity_arabic">ArabicActivity</string>
     <string name="title_activity_default">DefaultActivity</string>
+    <string name="title_activity_starter">Starter</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="endQuizText">END OF QUIZ </string>
 
 </resources>

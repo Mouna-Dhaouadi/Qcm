@@ -9,13 +9,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".QuizActivity"
-    tools:showIn="@layout/activity_quiz">
+    tools:context=".Repeating_activity"
+    tools:showIn="@layout/activity_repeating_activity">
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="inducesmile.com.androidquizapplication.QuizActivity">
+        tools:context=".Repeating_activity">
 
         <TextView
 
@@ -25,7 +26,7 @@
 
             android:text="question"
 
-            android:id="@+id/quiz_question"
+            android:id="@+id/quiz_question_rep"
 
             android:layout_alignParentTop="true"
 
@@ -53,15 +54,15 @@
 
             android:layout_height="wrap_content"
 
-            android:layout_below="@+id/quiz_question"
+            android:layout_below="@+id/quiz_question_rep"
 
-            android:layout_alignLeft="@+id/quiz_question"
+            android:layout_alignLeft="@+id/quiz_question_rep"
 
-            android:layout_alignStart="@+id/quiz_question"
+            android:layout_alignStart="@+id/quiz_question_rep"
 
             android:layout_marginTop="40dp"
 
-            android:id="@+id/radioGroup">
+            android:id="@+id/radioGroup_rep">
 
             <RadioButton
 
@@ -69,7 +70,7 @@
 
                 android:layout_width="wrap_content"
 
-                android:id="@+id/radio0"
+                android:id="@+id/radio0_rep"
 
                 android:textSize="15sp"
 
@@ -88,7 +89,7 @@
 
                 android:layout_width="wrap_content"
 
-                android:id="@+id/radio1"
+                android:id="@+id/radio1_rep"
 
                 android:textSize="15sp"
 
@@ -99,7 +100,7 @@
                 android:layout_marginBottom="10dp"
 
                 android:paddingLeft="20dp"
-                />
+                android:checked="false" />
 
             <RadioButton
 
@@ -107,7 +108,7 @@
 
                 android:layout_width="wrap_content"
 
-                android:id="@+id/radio2"
+                android:id="@+id/radio2_rep"
 
                 android:textSize="15sp"
 
@@ -118,7 +119,7 @@
                 android:layout_marginBottom="10dp"
 
                 android:paddingLeft="20dp"
-                />
+                android:checked="false" />
 
             <RadioButton
 
@@ -126,7 +127,7 @@
 
                 android:layout_width="wrap_content"
 
-                android:id="@+id/radio3"
+                android:id="@+id/radio3_rep"
 
                 android:textSize="15sp"
 
@@ -135,7 +136,7 @@
                 android:text="@string/app_name"
 
                 android:paddingLeft="20dp"
-                />
+                android:checked="false" />
 
         </RadioGroup>
 
@@ -147,11 +148,11 @@
 
             android:gravity="center"
 
-            android:id="@+id/nextquiz"
+            android:id="@+id/check_rep"
 
             android:textColor="@color/white"
 
-            android:text="next_questions"
+            android:text="check"
 
 
             android:layout_marginRight="10dp"
@@ -160,39 +161,16 @@
 
             android:layout_alignParentRight="true"
 
-            android:layout_alignBaseline="@+id/previousquiz"/>
-
-        <Button
-
-            android:layout_height="wrap_content"
-
-            android:layout_width="160dp"
-
-            android:gravity="center"
-
-            android:id="@+id/previousquiz"
-
-            android:textColor="@color/white"
-
-            android:text="previous_questions"
-
-
-            android:layout_below="@+id/radioGroup"
-
-            android:layout_alignLeft="@+id/radioGroup"
-
-            android:padding="5dp"
-
-            android:layout_marginTop="20dp"
-
-            android:layout_alignStart="@+id/radioGroup" />
+            android:layout_below="@+id/radioGroup_rep"
+            android:layout_alignLeft="@+id/radioGroup_rep"
+            android:layout_alignStart="@+id/radioGroup_rep" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="hint"
-            android:id="@+id/btHint"
-            android:layout_below="@+id/nextquiz"
+            android:id="@+id/btHint_rep"
+            android:layout_below="@+id/check_rep"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
